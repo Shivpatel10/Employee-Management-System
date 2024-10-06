@@ -7,7 +7,8 @@ class Employee {
         this.department = department; //string
     }
         getDetails() { // using getDetail to return a string with employee's info
-            return(console.log( `${this.name} is earning ${this.salary} as a ${this.position}`));
+            return(
+                console.log( `${this.name} is earning ${this.salary} as a ${this.position}`));
         };
 }
 
@@ -23,13 +24,22 @@ class Employee {
             };
 
             getDepartmentSalary() {
-                return this.employees.reduce.apply((totalDepSalary, employee) => totalDepSalary + employee.salary); 
+                return this.employees.reduce((totalDepSalary, employee) => totalDepSalary += employee.salary); 
                 //used reduce to get one total salary of all employees within a department
             };
     }
 
-
-
+//Task 3: Create a Manager Class that Inherits from Employee
+    class Manager extends Employee {
+        constructor(name, salary, position, department, bonus) {
+            super(name, salary, "Manager", department); // used to ensure that the parent Employee class properties are correctly initialized 
+             this.bonus = bonus; //number
+            }
+                getDetails() { // using getDetail to return a string with employee's info
+                    return(
+                        console.log(`${this.name} is earning ${this.salary} as a Manager within the ${this.department} department with a bonus of ${this.bonus}`));
+                };
+    }
 
 
 
@@ -47,17 +57,17 @@ class Employee {
 // Create employees
     const alice = new Employee("Alice", 80000, "Developer", "Engineering");
     const bob = new Employee("Bob", 75000, "Designer", "Marketing");
-    //const charlie = new Manager("Charlie", 120000, "Engineering Manager", "Engineering", 20000);
-    //const diana = new Manager("Diana", 130000, "Marketing Manager", "Marketing", 25000);
+    const charlie = new Manager("Charlie", 120000, "Engineering Manager", "Engineering", 20000);
+    const diana = new Manager("Diana", 130000, "Marketing Manager", "Marketing", 25000);
 
 // Add employees to departments
     engineering.addEmployee(alice);
-    //engineering.addEmployee(charlie);
+    engineering.addEmployee(charlie);
     marketing.addEmployee(bob);
-    //marketing.addEmployee(diana);
+    marketing.addEmployee(diana);
 
 // Calculate total salary for each department
-    //console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}`);
-    //console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`);
-    //console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`);
-    //console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`);
+    console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}`);
+   // console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`);
+    console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`);
+   //console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`);
