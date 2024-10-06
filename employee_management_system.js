@@ -11,7 +11,22 @@ class Employee {
         };
 }
 
+//Task 2: Create a Department Class
+    class Department {
+        constructor(departmentName, employees) {
+         this.departmentName = departmentName; //string
+         this.employees = []; //array of employees
+        }
 
+            addEmployee(employee) {
+                this.employees.push(employee) //this statement to add an employee to the employees array created in the department class
+            };
+
+            getDepartmentSalary() {
+                return this.employees.reduce.apply((totalDepSalary, employee) => totalDepSalary + employee.salary); 
+                //used reduce to get one total salary of all employees within a department
+            };
+    }
 
 
 
@@ -26,19 +41,19 @@ class Employee {
 
 
 // Create departments
-    //const engineering = new Department("Engineering");
-    //const marketing = new Department("Marketing");
+    const engineering = new Department("Engineering");
+    const marketing = new Department("Marketing");
 
 // Create employees
-    //const alice = new Employee("Alice", 80000, "Developer", "Engineering");
-    //const bob = new Employee("Bob", 75000, "Designer", "Marketing");
+    const alice = new Employee("Alice", 80000, "Developer", "Engineering");
+    const bob = new Employee("Bob", 75000, "Designer", "Marketing");
     //const charlie = new Manager("Charlie", 120000, "Engineering Manager", "Engineering", 20000);
     //const diana = new Manager("Diana", 130000, "Marketing Manager", "Marketing", 25000);
 
 // Add employees to departments
-    //engineering.addEmployee(alice);
+    engineering.addEmployee(alice);
     //engineering.addEmployee(charlie);
-    //marketing.addEmployee(bob);
+    marketing.addEmployee(bob);
     //marketing.addEmployee(diana);
 
 // Calculate total salary for each department
